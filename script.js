@@ -8,9 +8,13 @@ const playerPlay = () => {
   let playerMove = prompt(
     'type: rock, paper, scissors. Wrong spelling will chose rock'
   ).toLowerCase();
-  //checks if there is a valid move
-  const playerMoveCheck = moveSet.some((move) => move === playerMove);
-  return playerMoveCheck ? playerMove : 'rock';
+  //checks if there is a valid moves
+  while (!moveSet.some((move) => move === playerMove)) {
+    playerMove = prompt(
+      'wrong spelling: please enter rock paper scissors'
+    ).toLowerCase();
+  }
+  return playerMove;
 };
 
 const play = (playerSelection, computerSelection) => {
@@ -41,6 +45,17 @@ const getGame = () => {
     computerSelection = computerPlay();
     console.log(play(playerSelection, computerSelection));
   }
+  computerScore > playerScore
+    ? console.log(
+        `you lose. score is: player ${playerScore} | computer: ${computerScore}`
+      )
+    : playerScore > computerScore
+    ? console.log(
+        `you win!. score is: player ${playerScore} | computer: ${computerScore}`
+      )
+    : console.log(
+        `draw. score is: player ${playerScore} | computer: ${computerScore}`
+      );
 };
 
 getGame();
