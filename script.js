@@ -5,9 +5,7 @@ let computerScore = 0;
 const computerPlay = () => moveSet[Math.floor(Math.random() * moveSet.length)];
 
 const playerPlay = () => {
-  let playerMove = prompt(
-    'type: rock, paper, scissors. Wrong spelling will chose rock'
-  ).toLowerCase();
+  let playerMove = prompt('type: rock, paper, scissors.').toLowerCase();
   //checks if there is a valid moves
   while (!moveSet.some((move) => move === playerMove)) {
     playerMove = prompt(
